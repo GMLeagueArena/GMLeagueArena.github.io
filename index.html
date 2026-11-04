@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="stylesheet" href="./static/css/page.css">
+  <link rel="stylesheet" href="./static/css/page.css?v=2">
 
   <script defer src="./static/js/fontawesome.all.min.js"></script>
 
@@ -91,10 +91,9 @@
 <div class="content">
   <div class="columns is-centered has-text-centered" style="margin-top: -80px;">
     <div class="column">
-      <figure>
-        <img src="./assets/figures/trajectories.webp" alt="Illustrative performance trajectories of four team-management strategies over five seasons">
-        <figcaption>Figure 1: Illustrative performance trajectories of four team-management strategies (Win-Now, Aggressive Build, Steady Build, Rebuild) over five seasons. Early competitive gains can diminish, whereas rebuilding and sustained investment can yield delayed benefits.</figcaption>
-      </figure>
+      <video controls playsinline preload="metadata" poster="./assets/video/poster.jpg" style="width: 100%; border-radius: 12px;">
+        <source src="./assets/video/gm_league_arena_promo.mp4" type="video/mp4" />
+      </video>
     </div>
   </div>
 
@@ -108,6 +107,11 @@ Long-horizon decision-making under sustained competition requires large language
   </div>
 
   <hr />
+
+  <figure>
+    <img src="./assets/figures/trajectories.webp" alt="Illustrative performance trajectories of four team-management strategies over five seasons">
+    <figcaption>Figure 1: Illustrative performance trajectories of four team-management strategies (Win-Now, Aggressive Build, Steady Build, Rebuild) over five seasons. Early competitive gains can diminish, whereas rebuilding and sustained investment can yield delayed benefits.</figcaption>
+  </figure>
 
   <h2 id="highlights">Highlights</h2>
   <ul>
@@ -212,7 +216,7 @@ Long-horizon decision-making under sustained competition requires large language
   </div>
 </footer>
 
-<script src="./static/js/leaderboard.js"></script>
+<script src="./static/js/leaderboard.js?v=2"></script>
 <script>
   document.getElementById("code-btn").addEventListener("click", function (e) {
     e.preventDefault();
