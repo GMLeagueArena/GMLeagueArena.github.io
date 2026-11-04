@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="GM League Arena (GM Bench): an interactive long-horizon benchmark in which LLMs act as general managers of professional sports teams across seasons.">
+  <meta name="keywords" content="LLM, benchmark, long-horizon, agents, sports management, NBA, GM Bench, GM League Arena">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GM League Arena: An Interactive Long-Horizon Task Benchmark Based on Professional Sports League Management</title>
+
+  <meta property="og:title" content="GM League Arena: An Interactive Long-Horizon Task Benchmark Based on Professional Sports League Management">
+  <meta property="og:description" content="31 LLMs manage teams across five seasons in four sports under salary caps, luxury tax, player demands and market competition.">
+  <meta property="og:image" content="https://gmleaguearena.github.io/assets/figures/trajectories.png">
+  <meta property="og:url" content="https://gmleaguearena.github.io/">
+
+  <link rel="icon" type="image/svg+xml" href="./assets/logos/cnpc-emblem.svg">
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/page.css">
+
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+
+  <!-- MathJax -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+        displayMath: [ ['$$', '$$'], ['\\[', '\\]'] ],
+        processEscapes: true,
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <div class="institution-logos" aria-label="Participating institution">
+            <a href="https://www.cnpc.com.cn/" aria-label="China National Petroleum Corporation homepage"><img src="./assets/logos/cnpc.png" alt="CNPC"></a>
+          </div>
+
+          <h1 class="title is-1 publication-title">GM League Arena: An Interactive Long-Horizon Task Benchmark Based on Professional Sports League Management</h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Junkai Zhou, <a href="https://zimingpan.github.io/">Ziming Pan</a>, and Zhaoyi Zhang
+            </span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2611.05147"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-alt"></i></span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#" role="button" id="code-btn" aria-describedby="code-soon"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code</span>
+                </a>
+              </span>
+            </div>
+            <p id="code-soon" class="code-soon" role="status" hidden>
+              <i class="fas fa-tools"></i>&nbsp; Code is being prepared and will be released soon.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+<div class="container is-max-desktop">
+
+<div class="content">
+  <div class="columns is-centered has-text-centered" style="margin-top: -80px;">
+    <div class="column">
+      <figure>
+        <img src="./assets/figures/trajectories.webp" alt="Illustrative performance trajectories of four team-management strategies over five seasons">
+        <figcaption>Figure 1: Illustrative performance trajectories of four team-management strategies (Win-Now, Aggressive Build, Steady Build, Rebuild) over five seasons. Early competitive gains can diminish, whereas rebuilding and sustained investment can yield delayed benefits.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <h2>Abstract</h2>
+      <div class="content has-text-justified">
+Long-horizon decision-making under sustained competition requires large language models (LLMs) to balance immediate investment with future resource needs. However, local success in multi-step interactions can not adequately capture cumulative decision effects or demonstrate long-term goal achievement under resource constraints and sustained competition. To address this gap, we introduce <strong>GM Bench</strong>, a benchmark for managing professional sports teams across seasons under resource constraints and competition among teams. We build the environment simulators for four sports and add financial constraints, player demands, and market mechanisms to establish a unified task across sports. Diverse rosters of comparable strength are constructed from real-world player data, and each LLM is evaluated as a team general manager to assess its long-term management capabilities. We evaluate competitive performance, cash reserves, and cross-season improvement across four sports. Over five NBA seasons, Claude Opus 5.5 ranks first among 29 LLMs, while GPT-6 Astra and GPT-6.1 Sol combine strong performance with larger cash reserves.
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <h2 id="highlights">Highlights</h2>
+  <ul>
+    <li><p>🏀 <strong>Long-horizon management as a task.</strong> Each LLM is a team general manager over five seasons; trades, signings and renewals made now shape payroll, assets and options for every later season.</p></li>
+    <li><p>💰 <strong>Real resource constraints.</strong> Salary cap and matching, luxury tax, and a cash balance updated by revenue, operating expenses and tax, carried forward across seasons.</p></li>
+    <li><p>🗣️ <strong>Multi-role interaction.</strong> LLM GMs negotiate with each other and with players and agents, who share a general LLM to express demands, trade requests and public rumors.</p></li>
+    <li><p>🏒 <strong>One task, four sports.</strong> The same management loop runs on NBA, NFL, NHL and MLB simulators, so strategies can be compared under different rules and roster needs.</p></li>
+    <li><p>⚖️ <strong>Fair starting points.</strong> Five roster types (Balanced, Star, Twins, Offense, Defense) built from real-world player ratings, with comparable initial strength but different needs.</p></li>
+    <li><p>📈 <strong>Three-way evaluation.</strong> Mean season-end Elo, terminal cash, and cross-season win-rate improvement $G_i$, together with action logs and trading diagnostics.</p></li>
+  </ul>
+
+  <h2 id="task">Task Definition</h2>
+  <p>Each evaluated LLM serves as a team GM. Its objective is to improve competitive performance across seasons by balancing current roster investment with future resource needs. We model the task as a partially observable stochastic game</p>
+  $$\mathcal{G} = (\mathcal{I}, \mathcal{S}, \mathcal{A}, P, O, \mathbf{U}, H),$$
+  <p>where $\mathcal{I}$ is the team set, $\mathcal{S}$ comprises roster, contract, financial and market states, $\mathcal{A}$ is the joint GM action space, $P$ governs transitions, $O$ determines information visibility, $\mathbf{U}$ represents management outcomes, and $H$ is the decision horizon across seasons. Model $m_i$ for team $i$ acts on its observation and history while the environment advances under the joint action:</p>
+  $$a_t^i \sim \pi_{m_i}(\cdot \mid o_t^i, h_t^i), \qquad s_{t+1} \sim P(\cdot \mid s_t, \mathbf{a}_t).$$
+  <p>Changes caused by actions persist and enter subsequent observations according to disclosure rules, so the task combines repeated decisions, state dependencies across phases, and delayed feedback.</p>
+
+  <h2 id="overview">Benchmark Overview</h2>
+  <figure>
+    <img src="./assets/figures/overview.webp" alt="Overview of GM Bench with the NBA environment">
+    <figcaption>Figure 2: Overview of GM Bench, illustrated with the NBA environment and extended to hockey, baseball, and American football. LLM general managers interact with players and their agents within a shared simulator that enforces league and financial rules, while evaluation tracks competitive performance, resources and finances, and cross-season improvement.</figcaption>
+  </figure>
+
+  <div class="roles">
+    <div class="role">
+      <h4>🧑‍💼 General Managers (evaluated)</h4>
+      <p>Four action types: <strong>drafting</strong> rookies, <strong>signing</strong> free agents, <strong>trading</strong> players and picks with other GMs, and <strong>renewing</strong> contracts after each season.</p>
+    </div>
+    <div class="role">
+      <h4>🗣️ Players &amp; Agents (NPCs)</h4>
+      <p>Players express preferences over prospects, roles and pay; agents generate trade requests and public rumors that become market signals.</p>
+    </div>
+    <div class="role">
+      <h4>🏟️ System Environment</h4>
+      <p>Validates actions, simulates games, settles revenue and expenses, enforces cap and tax rules, and opens draft, signing and renewal windows.</p>
+    </div>
+  </div>
+
+  <p>The NBA environment has three shared modules: <em>League Rules</em> (salary cap &amp; matching, luxury tax &amp; settlement), <em>Player &amp; Team Analysis</em> (training statistics, team performance data), and <em>Competition Simulation</em> (match-day procedures, season schedule).</p>
+
+  <h2 id="rosters">Roster Types</h2>
+  <p>For each sport, five roster types are constructed from real-world player ratings with comparable initial strength but distinct needs for bench depth, support for core players, and offensive or defensive improvement.</p>
+  <figure>
+    <img src="./assets/figures/roster-types.webp" alt="Radar profiles of the five team types">
+    <figcaption>Figure 3: Schematic profiles of the five team types. Axes: roster balance (BL), single-star contrast (SC), dual-core advantage (DC), offensive index (OI), and defensive index (DI).</figcaption>
+  </figure>
+
+  <h2 id="metrics">Evaluation Metrics</h2>
+  <p><strong>Competitive performance.</strong> All $N$ teams start each season at $R_0 = 1500$ with no carry-over. For each rated game, ratings update with $K = 20$:</p>
+  $$p_{i,s,g} = \frac{1}{1 + 10^{(R_{j,s}^{(g-1)} - R_{i,s}^{(g-1)})/400}}, \qquad R_{k,s}^{(g)} = R_{k,s}^{(g-1)} + K\big(y_{k,s,g} - p_{k,s,g}\big).$$
+  <p>We report the mean season-end Elo $\overline{E}_i = \frac{1}{T}\sum_{s=1}^{T} E_{i,s}$, plus regular-season records and rank.</p>
+  <p><strong>Resources and finances.</strong> Terminal cash $C_i$ is the balance after revenue and expenses are settled at the end of the horizon, reflecting capacity for further investment.</p>
+  <p><strong>Long-term improvement.</strong> The difference between mean regular-season win rates in the final and initial $w$ seasons:</p>
+  $$G_i = \frac{1}{w}\sum_{s=T-w+1}^{T} v_{i,s} - \frac{1}{w}\sum_{s=1}^{w} v_{i,s}, \qquad v_{i,s} = \frac{W_{i,s}}{W_{i,s}+L_{i,s}}.$$
+
+  <h2 id="leaderboard">Leaderboard</h2>
+  <p>Each entry is one full five-season run (2022–2026). Click a column header to sort. The rule-based <strong>Native GM strategy</strong> baseline is highlighted.</p>
+  <div class="lb-tabs" role="tablist" aria-label="Sport">
+    <button role="tab" data-sport="nba" aria-selected="true">🏀 NBA</button>
+    <button role="tab" data-sport="nfl" aria-selected="false">🏈 American Football</button>
+    <button role="tab" data-sport="nhl" aria-selected="false">🏒 Ice Hockey</button>
+    <button role="tab" data-sport="mlb" aria-selected="false">⚾ Baseball</button>
+  </div>
+  <div class="lb-wrap"><table class="lb" id="lb"></table></div>
+  <p class="lb-note" id="lb-note"></p>
+
+  <h2 id="findings">Key Findings</h2>
+  <ul>
+    <li><p>🏆 <strong>Wide divergence from equal starts.</strong> In the NBA, Elo spans 1071.0 to 1977.3. Claude Opus 5.5 ranks first and wins three of five championships; Opus, GPT-6 Astra and Claude Sonnet 5.5 collectively win all five titles.</p></li>
+    <li><p>💵 <strong>Different investment styles.</strong> Claude GMs actively trade for contention, while GPT-6 GMs favor cautious acquisitions: Astra and Sol finish with 1006.62 and 1152.33 in cash versus 312.48 for Opus.</p></li>
+    <li><p>📉 <strong>Peaks are not sustained improvement.</strong> Sonnet peaks at 75 wins in 2024 and wins a title, then falls to 65 and 56 after unaffordable renewals cost it valuable players. Sol climbs steadily from 45 to 71 wins.</p></li>
+    <li><p>🧮 <strong>Cash alone is not success.</strong> MiMo-V2.6-Pro retains 925.41 in cash but ranks 23rd as its wins fall from 40 to 22; deficits appear at very different competitive levels.</p></li>
+    <li><p>🧭 <strong>Many LLMs trail a rule-based GM.</strong> The Native GM baseline ranks 14th in the NBA; 16 LLMs finish below it.</p></li>
+    <li><p>🌐 <strong>Leadership transfers across sports.</strong> The six leading NBA models stay in the top seven in every other sport. Opus leads American football and ice hockey; GPT-6 Astra leads baseball, where Opus ranks second but ends with negative cash.</p></li>
+  </ul>
+
+  <h2 id="citation">Citation</h2>
+<pre><code>@misc{zhou2026gmleaguearena,
+      title={GM League Arena: An Interactive Long-Horizon Task Benchmark Based on Professional Sports League Management},
+      author={Junkai Zhou and Ziming Pan and Zhaoyi Zhang},
+      year={2026},
+      eprint={2611.05147},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2611.05147},
+}</code></pre>
+
+</div>
+</div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            <a class="icon-link" href="https://arxiv.org/abs/2611.05147" aria-label="arXiv"><i class="fas fa-file-alt"></i></a>
+          </p>
+          <p>© Copyright 2026 GM League Arena authors.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="./static/js/leaderboard.js"></script>
+<script>
+  document.getElementById("code-btn").addEventListener("click", function (e) {
+    e.preventDefault();
+    var n = document.getElementById("code-soon");
+    n.hidden = false;
+    n.classList.remove("pulse"); void n.offsetWidth; n.classList.add("pulse");
+  });
+</script>
+</body>
+</html>
