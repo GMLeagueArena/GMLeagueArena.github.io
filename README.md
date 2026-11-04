@@ -8,5 +8,3 @@ Static site (Bulma + vanilla JS). Preview locally:
 ```bash
 python3 -m http.server 8765
 ```
-
-Leaderboard data lives in `static/js/leaderboard.js` (transcribed from Tables 1–3 of the paper).
